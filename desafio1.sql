@@ -25,7 +25,9 @@ DROP DATABASE IF EXISTS SpotifyClone;
     CREATE TABLE SpotifyClone.artists_followed(
 	  user_id INT NOT NULL,
       artist_id INT NOT NULL,
-      CONSTRAINT PRIMARY KEY (user_id, artist_id)
+      CONSTRAINT PRIMARY KEY (user_id, artist_id),
+	  FOREIGN KEY (user_id) REFERENCES SpotifyClone.users (user_id),
+      FOREIGN KEY (artist_id) REFERENCES SpotifyClone.artists (artist_id) 
   ) engine = InnoDB;
 
     CREATE TABLE SpotifyClone.albums(
@@ -48,7 +50,9 @@ DROP DATABASE IF EXISTS SpotifyClone;
 	  user_id INT NOT NULL,
       song_id INT NOT NULL,
       listening_date DATETIME,
-      CONSTRAINT PRIMARY KEY (user_id, song_id)
+      CONSTRAINT PRIMARY KEY (user_id, song_id),
+	  FOREIGN KEY (user_id) REFERENCES SpotifyClone.users (user_id),
+      FOREIGN KEY (song_id) REFERENCES SpotifyClone.songs (song_id) 
   ) engine = InnoDB;
 
   INSERT INTO SpotifyClone.plans (`type`, price)
@@ -93,6 +97,7 @@ DROP DATABASE IF EXISTS SpotifyClone;
     (5, 5),
     (5, 6),
     (6, 1),
+    (6, 6),
     (7, 6),
     (9, 3),
     (10, 2);
@@ -123,19 +128,19 @@ DROP DATABASE IF EXISTS SpotifyClone;
 
   INSERT INTO SpotifyClone.listening_history (user_id, song_id, listening_date)
   VALUES
-    (1, 1, "2022-02-28 10:45:55"),
-    (1, 2, "2020-05-02 05:30:35"),
-    (1, 3, "2020-03-06 11:22:33"),
-    (2, 3, "2022-08-05 08:05:17"),
-    (2, 4, "2020-01-02 07:40:33"),
-    (3, 3, "2020-11-13 16:55:13"),
-    (3, 2, "2020-12-05 18:38:30"),
-    (4, 1, "2021-08-15 17:10:10"),
-    (5, 1, "2022-01-09 01:44:33"),
-    (5, 5, "2020-08-06 15:23:43"),
-    (6, 4, "2017-01-24 00:31:17"),
-    (6, 6, "2017-10-12 12:35:20"),
-    (7, 7, "2011-12-15 22:30:49"),
-    (8, 7, "2012-03-17 14:56:41"),
-    (9, 8,"2022-02-24 21:14:22"),
-    (10, 9, "2015-12-13 08:30:22");
+    (1, 1, '2022-02-28 10:45:55'),
+    (1, 2, '2020-05-02 05:30:35'),
+    (1, 3, '2020-03-06 11:22:33'),
+    (2, 3, '2022-08-05 08:05:17'),
+    (2, 4, '2020-01-02 07:40:33'),
+    (3, 3, '2020-11-13 16:55:13'),
+    (3, 2, '2020-12-05 18:38:30'),
+    (4, 1, '2021-08-15 17:10:10'),
+    (5, 1, '2022-01-09 01:44:33'),
+    (5, 5, '2020-08-06 15:23:43'),
+    (6, 4, '2017-01-24 00:31:17'),
+    (6, 6, '2017-10-12 12:35:20'),
+    (7, 7, '2011-12-15 22:30:49'),
+    (8, 7, '2012-03-17 14:56:41'),
+    (9, 8,'2022-02-24 21:14:22'),
+    (10, 9, '2015-12-13 08:30:22');
