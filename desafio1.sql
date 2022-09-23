@@ -40,14 +40,14 @@ DROP DATABASE IF EXISTS SpotifyClone;
       song_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
       song_name VARCHAR(255) NOT NULL,
       song_duration INT,
-      album_id YEAR,
+      album_id INT,
       FOREIGN KEY (album_id) REFERENCES SpotifyClone.albums (album_id) 
   ) engine = InnoDB;
 
     CREATE TABLE SpotifyClone.listening_history(
 	  user_id INT NOT NULL,
       song_id INT NOT NULL,
-      listening_date DATE,
+      listening_date DATETIME,
       CONSTRAINT PRIMARY KEY (user_id, song_id)
   ) engine = InnoDB;
 
@@ -72,12 +72,7 @@ DROP DATABASE IF EXISTS SpotifyClone;
     ('Jorge Amado', 58, 4, '2017-02-17')
     ;
 
-  INSERT INTO SpotifyClone.artists (coluna1, coluna2)
-  VALUES
-    ('exemplo de dados 1', 'exemplo de dados X'),
-    ('exemplo de dados 2', 'exemplo de dados Y');
-
-  INSERT INTO SpotifyClone.artists_followed (`name`)
+  INSERT INTO SpotifyClone.artists (`name`)
   VALUES
     ('Beyoncé'),
     ('Queen'),
@@ -85,6 +80,22 @@ DROP DATABASE IF EXISTS SpotifyClone;
     ('Baco Exu do Blues'),
     ('Blind Guardian'),
     ('Nina Simone');
+
+  INSERT INTO SpotifyClone.artists_followed (user_id, artist_id)
+  VALUES
+    (1, 1),
+    (1, 2),
+    (1, 3),
+    (2, 1),
+    (2, 3),
+    (3, 2),
+    (4, 4),
+    (5, 5),
+    (5, 6),
+    (6, 1),
+    (7, 6),
+    (9, 3),
+    (10, 2);
 
   INSERT INTO SpotifyClone.albums (title, artist_id, release_year)
   VALUES
@@ -110,7 +121,7 @@ DROP DATABASE IF EXISTS SpotifyClone;
     ('ALIEN SUPERSTAR', 116, 1),
     ('Como nossos pais', 105, 4);
 
-  INSERT INTO SpotifyClone.listening_history (coluna1, coluna2)
+  INSERT INTO SpotifyClone.listening_history (user_id, song_id, listening_date)
   VALUES
     (1, 1, "2022-02-28 10:45:55"),
     (1, 2, "2020-05-02 05:30:35"),
