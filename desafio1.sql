@@ -124,7 +124,7 @@ DROP DATABASE IF EXISTS SpotifyClone;
     ('Don’t Stop Me Now', 203, 2),
     ('The Bard’s Song', 244, 7),
     ('ALIEN SUPERSTAR', 116, 1),
-    ('Como nossos pais', 105, 4);
+    ('Como Nossos Pais', 105, 4);
 
   INSERT INTO SpotifyClone.listening_history (user_id, song_id, listening_date)
   VALUES
